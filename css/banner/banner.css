@@ -1,0 +1,152 @@
+.banner {
+}
+
+.banner__info {
+  height: 480px;
+  display: grid;
+  position: relative;
+  padding: 145px 112px 40px 112px;
+  background: url("img/banner.jpg") no-repeat 50% 50%/cover;
+  border-radius: 10px;
+}
+
+.banner__info:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.banner__title {
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 130%;
+  z-index: 2;
+}
+
+.period {
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+  max-width: 473px;
+  margin: auto auto 0;
+  z-index: 2;
+}
+
+.period__text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.time {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-items: end;
+  gap: 30px;
+}
+
+.time__text {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+}
+
+.time__number {
+  font-size: 60px;
+}
+
+@media(max-width: 1400px) {
+  .banner__info {
+    height: 314px;
+    padding: 80px 80px 36px 80px;
+  }
+
+  .banner__title {
+    font-size: 40px;
+  }
+
+  .period {
+    gap: 20px;
+  }
+
+  .time {
+    gap: 20px;
+  }
+
+  .time__text {
+    font-size: 20px;
+  }
+
+  .time__number {
+    font-size: 40px;
+  }
+}
+
+@media(max-width: 768px) {
+  .banner__info {
+    height: 280px;
+    padding: 64px 80px 30px 80px;
+  }
+
+  .banner__title {
+    font-size: 30px;
+    line-height: 130%;
+  }
+
+  .period {
+    gap: 20px;
+  }
+
+  .period__text {
+    font-size: 12px;
+  }
+
+  .time {
+    gap: 10px;
+  }
+
+  .time__text {
+    font-size: 16px;
+  }
+
+  .time__number {
+    font-size: 30px;
+  }
+}
+
+@media(max-width: 580px) {
+  .banner__info {
+    height: 340px;
+    padding: 50px 29px 30px 29px;
+    text-align: center;
+  }
+
+  .banner__title {
+    font-size: 22px;
+  }
+
+  .period {
+    gap: 10px;
+  }
+
+  .period__text {
+    font-size: 8px;
+  }
+
+  .time {
+    gap: 8px;
+  }
+
+  .time__text {
+    font-size: 12px;
+  }
+
+  .time__number {
+    font-size: 20px;
+  }
+}
