@@ -539,9 +539,8 @@
 
   .decorations {
     grid-column: 1 / span 2;
-    grid-row: 12 / span 1;
+    grid-row: 12 / span 2;
     min-height: 123px;
-    background-position: 50% 65%;
     padding: 10px 15px;
   }
 
