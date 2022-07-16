@@ -12,7 +12,6 @@
   display: grid;
   border-radius: 20px;
   min-height: 228px;
-  /*min-width: 245px;*/
   background: #38C0EB;
   padding: 20px;
 }
@@ -435,7 +434,7 @@
   }
 }
 
-@media(max-width: 580px) {
+@media(max-width: 640px) {
   .promo {
     padding-bottom: 40px;
   }
