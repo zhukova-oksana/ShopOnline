@@ -1,17 +1,21 @@
 .header {
-  padding: 27px 0 60px;
+  padding: 28px 0 60px;
 }
 
 .header__row {
   display: grid;
-  grid-template-columns: 190px 151px auto 354px;
-  gap: 99px;
+  grid-template-columns: 215px 151px auto 354px;
+  gap: 98px;
   align-items: center;
 }
 
-.logo {}
+.logo {
+  padding-top: 12px;
+}
 
-.logo__image {}
+.logo__image {
+  min-width: 188px;
+}
 
 .header__menu {
   max-width: 151px;
@@ -43,7 +47,7 @@
   width: 100%;
   background-color: var(--color-grey);
   border-radius: 30px;
-  padding: 17px 101px 17px 40px;
+  padding: 16px 101px 18px 41px;
   font-weight: 700;
   font-size: 16px;
   line-height: 125%;
@@ -97,7 +101,7 @@
 
 .icons__amount {
   position: absolute;
-  right: -5px;
+  right: -3px;
   top: 0;
   display: flex;
   align-items: center;
@@ -117,7 +121,11 @@
   .header__row {
     grid-template-columns: 190px auto auto;
     grid-template-rows: 1fr 1fr;
-    gap: 34px;
+    gap: 31px 49px;
+  }
+
+  .logo {
+    padding-top: 8px;
   }
 
   .header__menu {

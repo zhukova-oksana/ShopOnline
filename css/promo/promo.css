@@ -54,14 +54,14 @@
 }
 
 .info {
-  grid-column: 1 / span 6;
-  grid-row: 1 / span 2;
-  height: 480px;
+  grid-column: span 6;
+  grid-row: span 2;
+  min-height: 480px;
   display: grid;
   position: relative;
-  padding: 145px 112px 40px 112px;
-  background: url("img/banner.jpg") no-repeat 50% 50%/cover;
-  border-radius: 10px;
+  padding: 152px 112px 40px 112px;
+  background: url("img/banner.jpg") no-repeat 0% 50% / cover;
+  border-radius: 20px;
 }
 
 .info:before {
@@ -72,7 +72,7 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .info__title {
@@ -85,7 +85,7 @@
 .period {
   display: grid;
   justify-items: center;
-  gap: 30px;
+  gap: 22px;
   max-width: 473px;
   margin: auto auto 0;
   z-index: 2;
@@ -101,13 +101,13 @@
   display: grid;
   grid-template-columns: repeat(3, max-content);
   align-items: end;
-  gap: 30px;
+  gap: 29px;
 }
 
 .time__text {
   font-weight: 700;
   font-size: 32px;
-  line-height: 130%;
+  line-height: 161%;
 }
 
 .time__number {
@@ -117,9 +117,9 @@
 .text {
   background: var(--color-light-blue);
   border-radius: 20px;
-  padding: 24px 26px;
+  padding: 26px 26px 21px;
   font-size: 40px;
-  line-height: 120%;
+  line-height: 133%;
 }
 
 .text__big {
@@ -174,12 +174,13 @@
 .decorations__text {
   display: inline-block;
   background-color: var(--color-white);
-  padding: 30px 40px;
+  padding: 30px 43px 30px 40px;
   border-radius: 20px;
   font-weight: 700;
   font-size: 40px;
   line-height: 120%;
   color: var(--color-pink);
+  text-transform: uppercase;
 }
 
 .dress {
@@ -222,14 +223,19 @@
 }
 
 @media(max-width: 1850px) {
+  .promo {
+    padding-top: 26px;
+  }
+
   .promo__row {
     grid-template-columns: repeat(auto-fit, minmax(217px, 1fr));
-    gap: 30px;
+    gap: 22px 30px;
   }
 
   .promo__item {
-    min-height: 202px;
+    min-height: 194px;
     padding: 10px;
+    border-radius: 15px;
   }
 
   .promo__text {
@@ -255,9 +261,11 @@
 
   .info {
     min-height: 314px;
+    max-height: 314px;
     grid-column: span 4;
-    padding: 80px 80px 36px 80px;
-    margin-bottom: 20px;
+    padding: 82px 80px 36px 80px;
+    margin-bottom: 27px;
+    border-radius: 15px;
   }
 
   .info__title {
@@ -265,7 +273,7 @@
   }
 
   .period {
-    gap: 20px;
+    gap: 22px;
   }
 
   .time {
@@ -283,57 +291,77 @@
   .book {
     grid-column: 1 / span 1;
     grid-row: 3 / span 1;
+    padding: 10px 10px 31px 13px;
+    min-height: 202px;
   }
 
   .time-discount {
     grid-column: 2 / span 1;
     grid-row: 3 / span 1;
+    min-height: 202px;
   }
 
   .shoes {
     grid-column: 1 / span 2;
     grid-row: 4 / span 1;
+    min-height: 194px;
+  }
+
+  .promo__item_size_lh {
+    padding: 20px;
+  }
+
+  .text {
+    padding-bottom: 30px;
   }
 
   .present {
     grid-column: 1 / span 2;
     grid-row: 5 / span 1;
     padding-left: 30px;
+    min-height: 194px;
+    padding-bottom: 23px;
   }
 
   .dress {
     grid-column: 3 / span 1;
     grid-row: 5 / span 2;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    max-width: 206px;
+    padding-right: 23px;
   }
 
   .benefit{
     grid-column: 1 / span 2;
     grid-row: 6 / span 1;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     padding-left: 30px;
   }
 
   .chemistry {
     grid-column: 4 / span 1;
     grid-row: 5 / span 1;
+    min-width: 210px;
   }
 
   .end {
     grid-column: 4 / span 1;
     grid-row: 6 / span 1;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    min-width: 210px;
   }
 
   .decorations {
     grid-column: 1 / span 4;
     grid-row: 7 / span 2;
     min-height: 418px;
+    padding: 30px 30px 39px;
   }
 
   .decorations__text {
     font-size: 30px;
-    padding: 24px 46px;
+    padding: 27px 46px 19px;
+    border-radius: 15px;
   }
 }
 @media(max-width: 1023px) {
