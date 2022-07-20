@@ -327,7 +327,7 @@
     grid-column: 3 / span 1;
     grid-row: 5 / span 2;
     margin-bottom: 30px;
-    max-width: 206px;
+    /*max-width: 206px;*/
     padding-right: 23px;
   }
 
@@ -524,7 +524,7 @@
   }
 }
 
-@media(max-width: 735px) {
+@media(max-width: 750px) {
   .promo {
     padding-bottom: 40px;
   }
