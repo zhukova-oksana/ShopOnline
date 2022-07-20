@@ -144,15 +144,25 @@
     justify-content: end;
     gap: 40px;
   }
+
+  .icons__amount {
+    right: 0;
+    top: 1px;
+  }
 }
 
 @media(max-width: 768px) {
   .header {
-    padding: 25px 0 30px;
+    padding: 24px 0 21px;
   }
 
   .header__row {
-    gap: 29px;
+    grid-template-columns: 165px auto auto;
+    gap: 28px 0;
+  }
+
+  .logo__image {
+    min-width: 165px;
   }
 
   .header__menu {
@@ -180,7 +190,7 @@
   }
 
   .search__input {
-    padding: 14px 85px 13px 30px;
+    padding: 14px 85px 13px 26px;
     font-size: 12px;
     line-height: 130%;
   }
@@ -193,13 +203,17 @@
 
 @media(max-width: 580px) {
   .header {
-    padding: 20px 0 30px;
+    padding: 18px 0 14px;
   }
 
   .header__row {
     grid-template-columns: 114px auto;
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
+  }
+
+  .logo__image {
+    min-width: 114px;
   }
 
   .header__menu {

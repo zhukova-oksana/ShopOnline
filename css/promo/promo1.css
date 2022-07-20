@@ -18,8 +18,8 @@
 
 .promo__item_size_lh {
   display: grid;
-  grid-column: 3 / span 2;
-  grid-row: 3 / span 2;
+  grid-column: span 2;
+  grid-row: span 2;
   min-height: 228px;
   background: url("img/img-3.jpg") no-repeat center/cover;
   align-items: end;
@@ -289,21 +289,21 @@
   }
 
   .book {
-    grid-column: 1 / span 1;
-    grid-row: 3 / span 1;
+    grid-column: span 1;
+    grid-row: span 1;
     padding: 10px 10px 31px 13px;
     min-height: 202px;
   }
 
   .time-discount {
-    grid-column: 2 / span 1;
-    grid-row: 3 / span 1;
+    grid-column: span 1;
+    grid-row: span 1;
     min-height: 202px;
   }
 
   .shoes {
-    grid-column: 1 / span 2;
-    grid-row: 4 / span 1;
+    grid-column:  span 2;
+    grid-row: span 1;
     min-height: 194px;
   }
 
@@ -316,44 +316,44 @@
   }
 
   .present {
-    grid-column: 1 / span 2;
-    grid-row: 5 / span 1;
+    grid-column: span 2;
+    grid-row: span 1;
     padding-left: 30px;
     min-height: 194px;
     padding-bottom: 23px;
   }
 
   .dress {
-    grid-column: 3 / span 1;
-    grid-row: 5 / span 2;
+    grid-column: span 1;
+    grid-row: span 2;
     margin-bottom: 30px;
     max-width: 206px;
     padding-right: 23px;
   }
 
   .benefit{
-    grid-column: 1 / span 2;
-    grid-row: 6 / span 1;
+    grid-column: span 2;
+    grid-row: span 1;
     margin-bottom: 32px;
     padding-left: 30px;
   }
 
   .chemistry {
-    grid-column: 4 / span 1;
-    grid-row: 5 / span 1;
+    grid-column: span 1;
+    grid-row: span 1;
     min-width: 210px;
   }
 
   .end {
-    grid-column: 4 / span 1;
-    grid-row: 6 / span 1;
+    grid-column: span 1;
+    grid-row: span 1;
     margin-bottom: 30px;
     min-width: 210px;
   }
 
   .decorations {
-    grid-column: 1 / span 4;
-    grid-row: 7 / span 2;
+    grid-column: span 4;
+    grid-row: span 2;
     min-height: 418px;
     padding: 30px 30px 39px;
   }
@@ -371,12 +371,12 @@
 
   .promo__row {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: 140px 140px 182px 178px;
     gap: 22px 20px;
   }
 
   .promo__item {
     min-height: 130px;
-    border-radius: 12px;
   }
 
   .period {
@@ -409,10 +409,6 @@
     font-size: 20px;
   }
 
-  .book {
-    max-height: 130px;
-  }
-
   .book__bold {
     font-size: 26px;
   }
@@ -430,9 +426,8 @@
 
   .info {
     height: 280px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     padding: 64px 80px 30px 80px;
-    border-radius: 16px;
   }
 
   .info__title {
@@ -440,37 +435,20 @@
   }
 
   .decorations {
-    min-height: 332px;
-    padding-bottom: 26px;
-    padding-left: 28px;
+    min-height: 278px;
   }
 
   .decorations__text {
     font-size: 20px;
     padding: 22px 33px;
-    border-radius: 12px;
-  }
-
-  .shoes {
-    min-height: 126px;
   }
 
   .promo__item_size_lh {
     min-height: 278px;
-    padding: 10px;
-  }
-
-  .text {
-    padding-bottom: 20px;
-    padding-top: 15px;
-    border-radius: 10px;
   }
 
   .dress {
-    min-height: 273px;
-    max-height: 273px;
-    margin-bottom: 0;
-    padding-right: 10px;
+    min-height: 278px;
   }
 
   .discount {
@@ -481,50 +459,19 @@
 
   .time-discount {
     align-content: space-between;
-    padding: 15px 10px 15px 15px;
-    max-height: 130px;
-  }
-
-  .time-discount__text {
-    margin-bottom: 2px;
+    padding: 15px;
   }
 
   .chemistry, .end {
     min-width: auto;
-    margin-bottom: 0;
-  }
-
-  .end {
-    margin-top: -10px;
-    max-height: 130px;
-  }
-
-  .chemistry {
-    max-height: 130px;
-  }
-
-  .present {
-    min-height: 126px;
-    max-height: 126px;
-    padding-left: 23px;
-    padding-bottom: 16px;
-  }
-
-  .benefit {
-    min-height: 126px;
-    max-height: 126px;
-    padding-left: 22px;
-    margin-bottom: 0;
   }
 }
 
 @media(max-width: 768px) {
-  .promo__row {
-    grid-template-columns: 140px 140px 182px 178px;
-  }
+
 }
 
-@media(max-width: 735px) {
+@media(max-width: 640px) {
   .promo {
     padding-bottom: 40px;
   }
