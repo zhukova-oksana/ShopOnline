@@ -110,6 +110,10 @@
   line-height: 161%;
 }
 
+.time__text_sec {
+  display: none;
+}
+
 .time__number {
   font-size: 60px;
 }
