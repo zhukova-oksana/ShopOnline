@@ -23,21 +23,9 @@
   };
 
 const timer = deadline => {
-  const timerBlockDay = document.querySelector('.time__text_day');
-  const timerNumberDay = document.querySelector('.time__number_day');
-  const timerBlockHour = document.querySelector('.time__text_hour');
-  const timerNumberHour = document.querySelector('.time__number_hour');
-  const timerBlockMin = document.querySelector('.time__text_min');
-  const timerNumberMin = document.querySelector('.time__number_min');
-  const timerBlockSec = document.querySelector('.time__text_sec');
-  const timerNumberSec = document.querySelector('.time__number_sec');
-
   const getTimeRemaining = () => {
     const dateStop = new Date(deadline).getTime();
     const dataTimeZone = new Date(deadline).getTimezoneOffset();
-    // console.log('dat', dataTimeZone);
-    // console.log('dat разница', dataTimeZone + 180);
-    // console.log('dateStop', dateStop - ((dataTimeZone + 180) * 60 * 1000));
     const dateStopNew = dateStop - ((dataTimeZone + 180) * 60 * 1000);
 
     const dateNow = Date.now();
@@ -51,63 +39,88 @@ const timer = deadline => {
     return {timeRemaining, seconds, minutes, hours, days}
   };
 
-  // const createTimer = (obj, atr) => {
-  //   const timerContainer = document.querySelectorAll(atr);
-  //   console.log(timerContainer);
-  //   timerContainer.innerHTML = `
-  //     <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
-  //     <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
-  //     <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.min}</span> ${obj.minuteWord}</p>
-  //     <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.sec}</span> ${obj.secondWord}</p>`
-  // }
+  const createTimer = (obj, timerContainer) => {
+    if (obj.day < 1) {
+      timerContainer.innerHTML = `
+      <p class="period__text">До конца акции:</p>
+      <div class="time">
+        <p class="time__text time__text_day visually-hidden"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
+        <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
+        <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.minute}</span> ${obj.minuteWord}</p>
+        <p class="time__text time__text_sec"><span class="time__number time__number_sec">${obj.second}</span> ${obj.secondWord}</p>
+      </div>`;
+    } else {
+      timerContainer.innerHTML = `
+      <p class="period__text">До конца акции:</p>
+      <div class="time">
+        <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
+        <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
+        <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.minute}</span> ${obj.minuteWord}</p>
+        <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.second}</span> ${obj.secondWord}</p>
+      </div>`;
+    }
+
+    return timerContainer;
+  }
+
+  const timerContainer = document.querySelectorAll('[data-deadline]');
 
   const twoNumbers = (num) => ((num < 10) ? '0' + num : num);
 
   const start = () => {
     const timer = getTimeRemaining();
 
-    timerNumberDay.textContent = timer.days;
-    timerBlockDay.innerHTML = timerNumberDay.outerHTML + declinationWork(timer.days, daysWords);
+    let day = timer.days;
+    const dayWord = declinationWork(day, daysWords);
 
-    timerNumberHour.textContent = twoNumbers(timer.hours);
-    timerBlockHour.innerHTML = declinationWork(timer.hours, hoursWords);
+    let hour = twoNumbers(timer.hours);
+    const hourWord = declinationWork(hour, hoursWords);
 
-    timerNumberMin.textContent = twoNumbers(timer.minutes);
-    timerBlockMin.innerHTML = timerNumberMin.outerHTML + declinationWork(timer.minutes, minutesWords);
+    let minute = twoNumbers(timer.minutes);
+    const minuteWord = declinationWork(minute, minutesWords);
 
-    timerNumberSec.textContent = twoNumbers(timer.seconds);
-    timerBlockSec.innerHTML = timerNumberSec.outerHTML + declinationWork(timer.seconds, secondsWords);
+    let second = twoNumbers(timer.seconds);
+    const secondWord = declinationWork(second, secondsWords);
+
+    let timerInfo = {
+      day,
+      dayWord,
+      hour,
+      hourWord,
+      minute,
+      minuteWord,
+      second,
+      secondWord
+    }
 
     let intervalID;
-    if (timer.days < 1) {
+    if (timerInfo.day < 1) {
       intervalID = setTimeout(start, 1000);
-      timerBlockDay.classList.add('visually-hidden');
-      timerBlockSec.classList.remove('visually-hidden');
     } else {
       intervalID = setTimeout(start, 60000);
-    };
+    }
 
     if (timer.timeRemaining <= 0) {
       clearTimeout(intervalID);
-      timerNumberDay.textContent = '00';
-      timerNumberHour.textContent = '00';
-      timerNumberMin.textContent = '00';
-      timerNumberSec.textContent = '00';
+      timerInfo.day = '00';
+      timerInfo.hour = '00';
+      timerInfo.minute = '00';
+      timerInfo.second = '00';
       const period = document.querySelector('.period');
       period.classList.add('visually-hidden');
-    };
+    }
 
-    // return {
-    //
-    // }
+    const time = createTimer(timerInfo, timerContainer);
+    const period = document.querySelector('.period');
+    period.innerHTML = time.innerHTML;
 
+    return period;
   };
 
-  // const times = start();
-  // createTimer(times, '[data-deadline]');
+  start();
 };
 
-const deadline = document.querySelector('.time');
+const deadline = document.querySelector('.period');
 timer(deadline.getAttribute('data-deadline'));
 
 }
