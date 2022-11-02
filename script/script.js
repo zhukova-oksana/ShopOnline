@@ -51,14 +51,15 @@ const timer = deadline => {
     return {timeRemaining, seconds, minutes, hours, days}
   };
 
-  const createTimer = (obj) => {
-    const timerContainer = document.querySelectorAll('.time');
-    timerContainer.innerHTML = `
-      <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.daysWords}</p>
-      <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hoursWords}</p>
-      <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.min}</span> ${obj.minutesWords}</p>
-      <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.sec}</span> ${obj.secondsWords}</p>`
-  }
+  // const createTimer = (obj, atr) => {
+  //   const timerContainer = document.querySelectorAll(atr);
+  //   console.log(timerContainer);
+  //   timerContainer.innerHTML = `
+  //     <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
+  //     <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
+  //     <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.min}</span> ${obj.minuteWord}</p>
+  //     <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.sec}</span> ${obj.secondWord}</p>`
+  // }
 
   const twoNumbers = (num) => ((num < 10) ? '0' + num : num);
 
@@ -69,7 +70,7 @@ const timer = deadline => {
     timerBlockDay.innerHTML = timerNumberDay.outerHTML + declinationWork(timer.days, daysWords);
 
     timerNumberHour.textContent = twoNumbers(timer.hours);
-    timerBlockHour.innerHTML = timerNumberHour.outerHTML + declinationWork(timer.hours, hoursWords);
+    timerBlockHour.innerHTML = declinationWork(timer.hours, hoursWords);
 
     timerNumberMin.textContent = twoNumbers(timer.minutes);
     timerBlockMin.innerHTML = timerNumberMin.outerHTML + declinationWork(timer.minutes, minutesWords);
@@ -96,14 +97,14 @@ const timer = deadline => {
       period.classList.add('visually-hidden');
     };
 
-    return {
-
-    }
+    // return {
+    //
+    // }
 
   };
 
-  start();
-
+  // const times = start();
+  // createTimer(times, '[data-deadline]');
 };
 
 const deadline = document.querySelector('.time');
