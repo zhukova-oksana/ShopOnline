@@ -34,8 +34,14 @@ const timer = deadline => {
 
   const getTimeRemaining = () => {
     const dateStop = new Date(deadline).getTime();
+    const dataTimeZone = new Date(deadline).getTimezoneOffset();
+    // console.log('dat', dataTimeZone);
+    // console.log('dat разница', dataTimeZone + 180);
+    // console.log('dateStop', dateStop - ((dataTimeZone + 180) * 60 * 1000));
+    const dateStopNew = dateStop - ((dataTimeZone + 180) * 60 * 1000);
+
     const dateNow = Date.now();
-    const timeRemaining = dateStop - dateNow;
+    const timeRemaining = dateStopNew - dateNow;
 
     const seconds = Math.floor(timeRemaining / 1000 % 60);
     const minutes = Math.floor(timeRemaining / 1000 / 60 % 60);
@@ -43,38 +49,64 @@ const timer = deadline => {
     const days = Math.floor(timeRemaining / 1000 / 60 / 60 / 24);
 
     return {timeRemaining, seconds, minutes, hours, days}
+  };
+
+  const createTimer = (obj) => {
+    const timerContainer = document.querySelectorAll('.time');
+    timerContainer.innerHTML = `
+      <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.daysWords}</p>
+      <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hoursWords}</p>
+      <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.min}</span> ${obj.minutesWords}</p>
+      <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.sec}</span> ${obj.secondsWords}</p>`
   }
+
+  const twoNumbers = (num) => ((num < 10) ? '0' + num : num);
+
   const start = () => {
     const timer = getTimeRemaining();
 
-    timerNumberDay.textContent = timer.days + declinationWork(timer.days, daysWords);
-    // timerNumberDay.after(declinationWork(timer.days, daysWords));
-    timerNumberHour.textContent = timer.hours + declinationWork(timer.hours, hoursWords);
-    // timerNumberHour.after(declinationWork(timer.hours, hoursWords));
-    timerNumberMin.textContent = timer.minutes + declinationWork(timer.minutes, minutesWords);
-    // timerNumberMin.after(declinationWork(timer.minutes, minutesWords));
-    timerNumberSec.textContent = timer.seconds + declinationWork(timer.seconds, secondsWords);
-    // timerNumberSec.after(declinationWork(timer.seconds, secondsWords));
+    timerNumberDay.textContent = timer.days;
+    timerBlockDay.innerHTML = timerNumberDay.outerHTML + declinationWork(timer.days, daysWords);
+
+    timerNumberHour.textContent = twoNumbers(timer.hours);
+    timerBlockHour.innerHTML = timerNumberHour.outerHTML + declinationWork(timer.hours, hoursWords);
+
+    timerNumberMin.textContent = twoNumbers(timer.minutes);
+    timerBlockMin.innerHTML = timerNumberMin.outerHTML + declinationWork(timer.minutes, minutesWords);
+
+    timerNumberSec.textContent = twoNumbers(timer.seconds);
+    timerBlockSec.innerHTML = timerNumberSec.outerHTML + declinationWork(timer.seconds, secondsWords);
 
     let intervalID;
     if (timer.days < 1) {
       intervalID = setTimeout(start, 1000);
-      timerBlockDay.style.display = 'none';
-      timerBlockSec.style.display = 'block';
+      timerBlockDay.classList.add('visually-hidden');
+      timerBlockSec.classList.remove('visually-hidden');
     } else {
       intervalID = setTimeout(start, 60000);
-    }
+    };
+
     if (timer.timeRemaining <= 0) {
       clearTimeout(intervalID);
-      timerNumberDay.textContent = '0';
+      timerNumberDay.textContent = '00';
       timerNumberHour.textContent = '00';
       timerNumberMin.textContent = '00';
       timerNumberSec.textContent = '00';
+      const period = document.querySelector('.period');
+      period.classList.add('visually-hidden');
+    };
+
+    return {
+
     }
+
   };
 
   start();
 
 };
-timer('2022/11/29 21:47');
+
+const deadline = document.querySelector('.time');
+timer(deadline.getAttribute('data-deadline'));
+
 }
