@@ -86,7 +86,8 @@
   display: grid;
   justify-items: center;
   gap: 22px;
-  max-width: 473px;
+  width: 600px;
+  max-width: 600px;
   margin: auto auto 0;
   z-index: 2;
 }
@@ -110,9 +111,9 @@
   line-height: 161%;
 }
 
-.time__text_sec {
-  display: none;
-}
+/*.time__text_sec {*/
+/*  display: none;*/
+/*}*/
 
 .time__number {
   font-size: 60px;
