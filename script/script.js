@@ -22,43 +22,43 @@
     return ` ${words[index]}`;
   };
 
-const timer = deadline => {
-  const getTimeRemaining = () => {
-    const dateStop = new Date(deadline).getTime();
-    const dataTimeZone = new Date(deadline).getTimezoneOffset();
-    const dateStopNew = dateStop - ((dataTimeZone + 180) * 60 * 1000);
+  const timer = deadline => {
+    const getTimeRemaining = () => {
+      const dateStop = new Date(deadline).getTime();
+      const dataTimeZone = new Date(deadline).getTimezoneOffset();
+      const dateStopNew = dateStop - ((dataTimeZone + 180) * 60 * 1000);
 
-    const dateNow = Date.now();
-    const timeRemaining = dateStopNew - dateNow;
+      const dateNow = Date.now();
+      const timeRemaining = dateStopNew - dateNow;
 
-    const seconds = Math.floor(timeRemaining / 1000 % 60);
-    const minutes = Math.floor(timeRemaining / 1000 / 60 % 60);
-    const hours = Math.floor(timeRemaining / 1000 / 60 / 60 % 24);
-    const days = Math.floor(timeRemaining / 1000 / 60 / 60 / 24);
+      const seconds = Math.floor(timeRemaining / 1000 % 60);
+      const minutes = Math.floor(timeRemaining / 1000 / 60 % 60);
+      const hours = Math.floor(timeRemaining / 1000 / 60 / 60 % 24);
+      const days = Math.floor(timeRemaining / 1000 / 60 / 60 / 24);
 
-    return {timeRemaining, seconds, minutes, hours, days}
-  };
+      return {timeRemaining, seconds, minutes, hours, days}
+    };
 
-  const createTimer = (obj, timerContainer) => {
-    if (obj.day < 1) {
-      timerContainer.innerHTML = `
-      <p class="period__text">До конца акции:</p>
-      <div class="time">
-        <p class="time__text time__text_day visually-hidden"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
-        <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
-        <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.minute}</span> ${obj.minuteWord}</p>
-        <p class="time__text time__text_sec"><span class="time__number time__number_sec">${obj.second}</span> ${obj.secondWord}</p>
-      </div>`;
-    } else {
-      timerContainer.innerHTML = `
-      <p class="period__text">До конца акции:</p>
-      <div class="time">
-        <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
-        <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
-        <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.minute}</span> ${obj.minuteWord}</p>
-        <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.second}</span> ${obj.secondWord}</p>
-      </div>`;
-    }
+    const createTimer = (obj, timerContainer) => {
+      if (obj.day < 1) {
+        timerContainer.innerHTML = `
+        <p class="period__text">До конца акции:</p>
+        <div class="time">
+          <p class="time__text time__text_day visually-hidden"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
+          <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
+          <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.minute}</span> ${obj.minuteWord}</p>
+          <p class="time__text time__text_sec"><span class="time__number time__number_sec">${obj.second}</span> ${obj.secondWord}</p>
+        </div>`;
+      } else {
+        timerContainer.innerHTML = `
+        <p class="period__text">До конца акции:</p>
+        <div class="time">
+          <p class="time__text time__text_day"><span class="time__number time__number_day">${obj.day}</span> ${obj.dayWord}</p>
+          <p class="time__text time__text_hour"><span class="time__number time__number_hour">${obj.hour}</span> ${obj.hourWord}</p>
+          <p class="time__text time__text_min"><span class="time__number time__number_min">${obj.minute}</span> ${obj.minuteWord}</p>
+          <p class="time__text time__text_sec visually-hidden"><span class="time__number time__number_sec">${obj.second}</span> ${obj.secondWord}</p>
+        </div>`;
+      }
 
     return timerContainer;
   }
