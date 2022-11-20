@@ -10,7 +10,7 @@ const loadArticles = async (cb, num) => {
   let result;
   console.log('num', num);
   if (Number(num) === 1) {
-    // location.hash = '';
+    location.search = '';
     console.log('location.hash', location.hash);
     result = await fetch('https://gorest.co.in/public-api/posts');
   } else {
@@ -25,7 +25,6 @@ const loadArticles = async (cb, num) => {
   lastPage = activePage + 1;
 
   console.log('data', data);
-  console.log('location.hash', location.hash);
   cb(data);
 };
 
@@ -35,11 +34,10 @@ const renderArticles = async (data) => {
   const wrapperArticles = document.querySelector('.blog__row');
 
   const articles = data2.map(item => {
-    console.log('item-id', item.id);
     const card = document.createElement('div');
     card.classList.add('article');
     const url = '/ShopOnline/article.html';
-    console.log('url', url);
+
     card.insertAdjacentHTML('beforeend', `
         <div class="article__images">
           <a href="${url}?id=${item.id}"><img src="css/blog/img/no-image.png" alt="" class="article__image"></a>
@@ -59,9 +57,6 @@ const renderArticles = async (data) => {
   });
 
   wrapperArticles.append(...articles);
-
-  // const pagination = await data.meta.pagination.pages;
-  // console.log('data.pagination', pagination);
 
   const pages = document.querySelector('.pages');
   if (firstPage <= 1) {
