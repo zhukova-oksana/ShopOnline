@@ -19,6 +19,7 @@
     const article = dataArticle.data
     const author = dataAuthor.data;
 
+    document.title = article.title;
     navigationItem.innerHTML = article.title;
     articleTitle.innerHTML = article.title;
     articleText.innerHTML = article.body;
