@@ -1,5 +1,6 @@
 @import "../var.css";
 @import "../style.css";
+@import "../info/info.css";
 
 .blog {
   padding: 172px 0 148px;
@@ -48,6 +49,16 @@
   font-size: 32px;
   line-height: 130%;
   margin-bottom: 13px;
+  text-overflow: ellipsis;
+  -ms-line-clamp: 2;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  display: -webkit-box;
+  display: box;
+  word-wrap: break-word;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  overflow: hidden;
 }
 
 .article__data {
@@ -56,42 +67,6 @@
   font-size: 16px;
   line-height: 130%;
   color: var(--color-dark-grey);
-}
-
-.info {
-  display: flex;
-  gap: 27px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 130%;
-  color: var(--color-dark-grey);
-}
-
-.info__views {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.info__views:before {
-  width: 22px;
-  height: 17px;
-  content: "";
-  background: url("img/icon-view.svg") no-repeat 0 0;
-}
-
-.info__message {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-
-.info__message:before {
-  width: 24px;
-  height: 24px;
-  content: "";
-  background: url("img/icon-chat.svg") no-repeat 0 0;
 }
 
 .pages {

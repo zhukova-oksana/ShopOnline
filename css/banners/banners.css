@@ -1,0 +1,95 @@
+.banners {
+  max-width: 532px;
+}
+
+.banner {
+  position: relative;
+  min-width: 532px;
+  height: 328px;
+}
+
+.banner:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.banner_stambul {
+  background: linear-gradient(180.72deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.44)), url(img/1.jpg) no-repeat 50% 50%/cover;
+}
+
+.banner_renault {
+  background: linear-gradient(180.72deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.44)), url(img/2.png) no-repeat 50% 50%/cover;
+}
+
+.banner__text {
+  position: absolute;
+  bottom: 43px;
+  left: 30px;
+  max-width: 382px;
+}
+
+.banner__link {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+
+.banner__paragraph {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
+  color: var(--color-white);
+}
+
+@media(max-width: 1300px) {
+  .article {
+    gap: 70px;
+  }
+  .banner {
+    min-width: 352px;
+    height: 228px;
+  }
+  .banner__link {
+    font-size: 22px;
+  }
+  .banner__text {
+    bottom: 22px;
+    max-width: 90%;
+    left: 15px;
+  }
+}
+
+@media(max-width: 1100px) {
+  .banners {
+    display: flex;
+    gap: 30px;
+  }
+  .banners {
+    max-width: 100%;
+  }
+  .banner {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}
+@media(max-width: 850px) {
+  .banners {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .banner {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 320px;
+    height: 368px;
+  }
+}
+
+@media(max-width: 630px) {
+  .banner {
+    height: 250px;
+  }
+}

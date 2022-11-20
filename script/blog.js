@@ -8,8 +8,10 @@ let lastPage;
 
 const loadArticles = async (cb, num) => {
   let result;
+  console.log('num', num);
   if (Number(num) === 1) {
     // location.hash = '';
+    console.log('location.hash', location.hash);
     result = await fetch('https://gorest.co.in/public-api/posts');
   } else {
     // location.hash = `?page=${num}`;
@@ -27,31 +29,30 @@ const loadArticles = async (cb, num) => {
   cb(data);
 };
 
-
-
-
 const renderArticles = async (data) => {
   const data2 = await data.data;
 
   const wrapperArticles = document.querySelector('.blog__row');
 
   const articles = data2.map(item => {
-    // console.log('item', item);
+    console.log('item-id', item.id);
     const card = document.createElement('div');
     card.classList.add('article');
+    const url = '/ShopOnline/article.html';
+    console.log('url', url);
     card.insertAdjacentHTML('beforeend', `
         <div class="article__images">
-          <a href="#"><img src="css/blog/img/article-1.jpg" alt="" class="article__image"></a>
+          <a href="${url}?id=${item.id}"><img src="css/blog/img/no-image.png" alt="" class="article__image"></a>
         </div>
         <div class="article__information">
           <div class="article__text">
-            <a href="#" class="article__title">${item.title}</a>
-            <div class="article__data">22 октября 2021, 12:45</div>
+            <a href="${url}?id=${item.id}" class="article__title">${item.title}</a>
+<!--            <p class="article__data">22 октября 2021, 12:45</p>-->
           </div>
-          <div class="info">
-            <p class="info__views">1.2K</p>
-            <p class="info__message">0</p>
-          </div>
+<!--          <div class="info">-->
+<!--            <p class="info__views">1.2K</p>-->
+<!--            <p class="info__message">0</p>-->
+<!--          </div>-->
         </div>
     `);
     return card;
@@ -59,9 +60,9 @@ const renderArticles = async (data) => {
 
   wrapperArticles.append(...articles);
 
-  const pagination = await data.meta.pagination.pages;
+  // const pagination = await data.meta.pagination.pages;
+  // console.log('data.pagination', pagination);
 
-  console.log('data.pagination', pagination);
   const pages = document.querySelector('.pages');
   if (firstPage <= 1) {
     firstPage = 1;
@@ -88,6 +89,4 @@ const renderArticles = async (data) => {
 };
 
 let num = window.location.search.substring(6);
-console.log(num);
-
 loadArticles(renderArticles, num);
