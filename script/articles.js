@@ -33,9 +33,11 @@
 
   const learnPreviousPage = () => {
     const link = document.querySelector('.article__back');
+    const navigationLinkLast = document.querySelector('.navigation__link_last');
     const previousUrl = document.referrer;
 
     link.href = previousUrl;
+    navigationLinkLast.href = previousUrl;
   }
 
   learnPreviousPage();

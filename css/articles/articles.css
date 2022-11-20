@@ -11,7 +11,10 @@
   padding: 0;
   display: flex;
   gap: 143px;
-  flex: 1 1 100%;
+}
+
+.article__body {
+  flex: 1 1 auto;
 }
 
 .article__text {
