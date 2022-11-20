@@ -23,9 +23,10 @@
     articleTitle.innerHTML = article.title;
     articleText.innerHTML = article.body;
 
-    blockAuthor.innerHTML = author.name;
-    blockEmail.innerHTML = author.email;
-
+    if ((author.name) || (author.email)) {
+      blockAuthor.innerHTML = author.name;
+      blockEmail.innerHTML = author.email;
+    }
   };
 
   let num = window.location.search.substring(4);
