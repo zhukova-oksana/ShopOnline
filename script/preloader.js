@@ -21,7 +21,7 @@
   console.log(document.body);
 
   const hideOverlay = () => {
-    opacity -= 0.3;
+    opacity -= 0.2;
     overlay.style.opacity = opacity;
 
     if (opacity > 0) {
