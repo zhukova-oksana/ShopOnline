@@ -1,29 +1,36 @@
 'use strict';
 
-let opacity = 1;
+{
+  let opacity = 1;
 
-const overlay = document.createElement('div');
-overlay.style.cssText = `
+  const overlay = document.createElement('div');
+  overlay.style.cssText = `
   position: fixed;
+  z-index: 999;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: black;
+  background-color: #F6F6F6;
   opacity: ${opacity};
 `;
 
-document.body.append(overlay);
+  document.body.append(overlay);
 
-const hideOverlay = () => {
-  opacity -= 0.3;
-  overlay.style.opacity = opacity;
 
-  if (opacity > 0) {
-    requestAnimationFrame(hideOverlay);
-  } else {
-    overlay.remove();
+  console.log(document.body);
+
+  const hideOverlay = () => {
+    opacity -= 0.3;
+    overlay.style.opacity = opacity;
+
+    if (opacity > 0) {
+      console.log(opacity);
+      setTimeout(hideOverlay, 200);
+    } else {
+      overlay.remove();
+    }
   }
-}
 
-requestAnimationFrame(hideOverlay);
+  setTimeout(hideOverlay, 600);
+}
