@@ -15,6 +15,11 @@
   opacity: ${opacity};
 `;
 
+  const overlayInner = document.createElement('div');
+  overlayInner.classList.add('overlay__inner')
+
+  overlay.append(overlayInner);
+
   document.body.append(overlay);
 
 
